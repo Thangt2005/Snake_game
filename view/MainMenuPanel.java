@@ -30,7 +30,7 @@ public class MainMenuPanel extends JPanel {
         loadImages();
         startBounceEffect();
 
-        JLabel title = new JLabel("Snake Game J14", SwingConstants.CENTER);
+        JLabel title = new JLabel("Snake Game", SwingConstants.CENTER);
         title.setFont(titleFont);
         title.setForeground(new Color(40, 25, 10));
         title.setBounds(0, 35, 600, 110);

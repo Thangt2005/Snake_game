@@ -1,19 +1,20 @@
-# 🎓 🐍 GAME 2D & ỨNG DỤNG ĐỒ HỌA / RẮN SĂN MỒI (SNAKE) NÂNG CẤP
-> **Bài tập lớn cuối kỳ môn Lập trình Java**
+# 🎓 🐍 GAME 2D RẮNG SĂN MỒI
 
-> **Nhóm thực hiện:** Nhóm J14
+> **Nhóm thực hiện:** Nhóm 9
 
-> **Lớp:** 25CNTT1 - Khoa Toán Tin - ĐHSP Đà Nẵng
-## 👥 Thông tin nhóm (Team Members)
-| STT | Họ và Tên | Mã Sinh Viên | Vai trò / Nhiệm vụ | Link GitHub Cá Nhân |
-|---|---|---|---|---|
-| 1 | **Phạm Khánh Vy** | 3120225180 | Controller, đồng bộ, tối ưu hóa hệ thống, chỉnh sửa hoàn thiện code | [GitHub](https://github.com/kzylazyy) |
-| 2 | **Nguyễn Thị Thùy Dương** | 3120225035 | Model & Utils, I/O File & Exception,Documentation, Readme | [GitHub](https://github.com/nguyenthithuyduong211) |
-| 3 | **Đỗ Ngọc Khánh An** | 3120225001 | View, Đồ họa Game, Thiết kế Giao diện (Swing/Layout) | [GitHub](https://github.com/ngockhanhan15-netizen) |
+> Khoa Công Nghệ Thông Tin - ĐH Nông Lâm TP.HCM
+## 👥 Thông tin nhóm
+| STT | Họ và Tên             | Mã Sinh Viên | 
+|-----|-----------------------|--------------|
+| 1   | **Trần Hữu Thắng**    | 23130301     |  
+| 2   | **Võ Thành Giỏi**     | 23130083     | 
+| 3   | **Võ Văn Phương**     | 23130255     |  
+| 4   | **Nguyễn Quang Trực** | 23130351     |  
+| 5   | **Võ Văn Trường**     | 23130360     |  
 
 ## 📝 Giới thiệu dự án (Description)
  
-**Snake Game J14** là trò chơi Rắn Săn Mồi được phát triển hoàn chỉnh bằng **Java Swing**, thuộc đề tài số 17 trong nhóm *Game 2D & Ứng dụng Đồ họa*. Game cung cấp hai chế độ chơi: theo màn (5 màn với độ khó tăng dần và chướng ngại vật) và vô tận (tùy chỉnh độ khó, chế độ, kích thước map). Ứng dụng được xây dựng theo mô hình **MVC**, áp dụng đầy đủ OOP, File I/O và xử lý ngoại lệ theo đúng yêu cầu môn học.
+**Snake Game** là trò chơi Rắn Săn Mồi được phát triển hoàn chỉnh bằng **Java Swing**. Game cung cấp hai chế độ chơi: theo màn (5 màn với độ khó tăng dần và chướng ngại vật) và vô tận (tùy chỉnh độ khó, chế độ, kích thước map). Ứng dụng được xây dựng theo mô hình **MVC**, áp dụng đầy đủ OOP, File I/O.
  
 ---
 
@@ -162,9 +163,3 @@ java -cp out Main
  
 ---
 
-## 📸 Ảnh chụp màn hình (Screenshots)
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e32034ea-4cde-4c07-acbc-b43c386044ba" width="30%" alt="Màn hình Đăng Nhập">
-  <img src="https://github.com/user-attachments/assets/ff099487-c729-4015-9478-4b7112faa623" width="30%" alt="Màn hình Game Chơi">
-  <img src="https://github.com/user-attachments/assets/8708c5e3-5069-4848-a7dd-b8d134d0096d" width="30%" alt="Màn hình Kết Thúc">
-</p>

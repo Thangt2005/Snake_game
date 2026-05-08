@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
     private MainMenuPanel menuPanel;          // ← THÊM FIELD
 
     public MainFrame() {
-        setTitle("Snake Game J14 – Dọc");
+        setTitle("Snake Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 840);
         setResizable(false);
