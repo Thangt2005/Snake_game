@@ -1,3 +1,5 @@
+// file giao điện home, nơi hiển thị điểm cao nhất mà người dùng đạt được và chọn các chức năng.
+
 package view;
 
 import utils.FileHandler;      
@@ -36,7 +38,7 @@ public class MainMenuPanel extends JPanel {
         title.setBounds(0, 35, 600, 110);
         add(title);
 
-        // Điểm cao (đã là field để có thể update sau)
+        // Nơi hiển thị điểm cao nhất được lấy từ trong fiel highscore.txt
         highScoreLabel = new JLabel("ĐIỂM CAO: " + FileHandler.readHighScore(), SwingConstants.CENTER);
         highScoreLabel.setFont(smallFont);
         highScoreLabel.setForeground(new Color(65, 45, 25));
