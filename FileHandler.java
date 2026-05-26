@@ -8,15 +8,24 @@ public class FileHandler {
     private static final String HIGH_SCORE_FILE = "highscore.txt";
 	
 // lưu điểm cao nhất vào file highscore.txt
-    public static int readHighScore() {
-        File file = new File(HIGH_SCORE_FILE);
-        if (!file.exists()) return 0;
-        try (BufferedReader in = new BufferedReader(new FileReader(file))) {
-            String line = in.readLine();
-            if (line != null) return Integer.parseInt(line.trim());
-        } catch (Exception e) {}
-        return 0;
+public static int readHighScore() {
+    File file = new File(HIGH_SCORE_FILE);
+    if (!file.exists()) return 0;
+
+    try (BufferedReader in = new BufferedReader(new FileReader(file))) {
+        String line = in.readLine();
+        if (line != null) {
+            try {
+                return Integer.parseInt(line.trim());
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+    } catch (Exception e) {
+        System.err.println("Lỗi khi đọc file điểm cao: " + e.getMessage());
     }
+    return 0;
+}
 
 // hàm đọc điểm cao nhất được lưu trong file highscore.txt
     public static void saveHighScore(int score) {
