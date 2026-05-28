@@ -25,3 +25,52 @@ public class Logic {
         int[] head = snake.getBody().get(0);
         return head[0] == food.getX() && head[1] == food.getY();
     }
+    
+    private void handleFoodEaten() {
+        growSnake();
+        updateScore();
+        playEatSound();
+        handleSpeedMode();
+
+        if (checkLevelComplete()) return;
+
+        respawnFood();
+    }
+
+    private void growSnake() {
+        snake.grow();
+        eatenFood++;
+    }
+
+    private void updateScore() {
+        if (!isLevelMode) {
+            score += 10;
+        }
+    }
+
+    private void playEatSound() {
+        SoundManager.playEat();
+    }
+
+    private void handleSpeedMode() {
+        if (isSpeedRush) {
+            increaseSpeed();
+        }
+    }
+
+    private boolean checkLevelComplete() {
+        if (isLevelMode && eatenFood >= requiredFood) {
+            timer.stop();
+            showLevelWin();
+            return true;
+        }
+        return false;
+    }
+    private void respawnFood() {
+        food.respawn(20, 20, null, snake); 
+    }
+
+    // giả lập
+    private void increaseSpeed() {}
+    private void showLevelWin() {}
+}
