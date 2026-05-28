@@ -1,0 +1,49 @@
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Snake {
+    private List<Point> body;
+    private Direction direction;
+    private boolean alive;
+
+    public Snake() {
+        body = new ArrayList<>();
+        // Khởi tạo vị trí ban đầu
+        body.add(new Point(5, 5)); 
+        direction = Direction.RIGHT;
+        alive = true;
+    }
+
+    // Phương thức move() xuất hiện trong UC03.2
+    public void move() {
+        Point head = body.get(0);
+        Point newHead = new Point(head);
+
+        switch (direction) {
+            case UP:    newHead.y--; break;
+            case DOWN:  newHead.y++; break;
+            case LEFT:  newHead.x--; break;
+            case RIGHT: newHead.x++; break;
+        }
+
+        // Thêm đầu mới vào vị trí di chuyển
+        body.add(0, newHead);
+        // Xóa đuôi (nếu không ăn thức ăn - logic này thường được xử lý sau khi check va chạm)
+        body.remove(body.size() - 1);
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public Point getHead() {
+        return body.get(0);
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    
+    // Các phương thức grow(), checkSelfCollision() dùng cho UC03
+}
