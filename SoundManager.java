@@ -11,10 +11,9 @@ public class SoundManager {
 
     private static float musicVolume = 1.0f;
 
-    // === GETTER PUBLIC (sửa lỗi compile) ===
     public static boolean isMusicEnabled() { return isMusicEnabled; }
     public static boolean isSfxEnabled() { return isSfxEnabled; }
-
+    //lặp nhạc nền
     public static void playBackgroundMusic() {
         if (!isMusicEnabled) return;
         try {
@@ -51,3 +50,34 @@ public class SoundManager {
     public static void playClick()   { playSound("click.wav"); }
     public static void playLose()    { playSound("lose.wav"); }
     public static void playWin()     { playSound("win.wav"); }
+     private static void playSound(String soundName) {
+        if (!isSfxEnabled) return;
+        try {
+            File file = new File("sounds/" + soundName);
+            if (!file.exists()) return;
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (Exception ignored) {}
+    }
+    //set âm lượng
+    public static void setMusicVolume(float volume) {
+        musicVolume = Math.max(0.0f, Math.min(1.0f, volume));
+        if (backgroundVolumeControl != null) {
+            float dB = (float) (20 * Math.log10(musicVolume == 0 ? 0.0001 : musicVolume));
+            dB = Math.max(backgroundVolumeControl.getMinimum(), Math.min(backgroundVolumeControl.getMaximum(), dB));
+            backgroundVolumeControl.setValue(dB);
+        }
+    }
+    //set bật tắt nhạc
+    public static void setMusicEnabled(boolean enabled) {
+        isMusicEnabled = enabled;
+        if (enabled) playBackgroundMusic();
+        else stopBackgroundMusic();
+    }
+    //set hiệu ứng
+    public static void setSfxEnabled(boolean enabled) {
+        isSfxEnabled = enabled;
+    }
+}
