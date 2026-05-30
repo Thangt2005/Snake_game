@@ -8,7 +8,8 @@ public class Logic {
     private boolean isLevelMode;
     private boolean isSpeedRush;
     private int requiredFood;
-
+    private int gridSize;
+    private List<Obstacle> obstacles;
     private Timer timer;
 
     public Logic(Snake snake, Food food) {
@@ -67,7 +68,8 @@ public class Logic {
         return false;
     }
     private void respawnFood() {
-        food.respawn(20, 20, null, snake); 
+    food.respawn(gridSize, gridSize, obstacles, snake);
+} 
     }
 
     // giả lập
