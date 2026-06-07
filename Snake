@@ -1,0 +1,100 @@
+import java.awt.Point;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class SnakeGameModel {
+    // 1. Định nghĩa các hằng số hệ thống
+    public static final int BOARD_WIDTH = 30;
+    public static final int BOARD_HEIGHT = 30;
+
+    // 2. Các thuộc tính trạng thái (Data)
+    private LinkedList<Point> snake;
+    private Point food;
+    private Direction currentDirection;
+    private int score;
+    private boolean gameOver;
+
+    public enum Direction {
+        UP, DOWN, LEFT, RIGHT
+    }
+
+    // 3. Khởi tạo trạng thái ban đầu
+    public SnakeGameModel() {
+        resetGame();
+    }
+
+    public void resetGame() {
+        snake = new LinkedList<>();
+        // Rắn khởi đầu với 3 đốt tại giữa màn hình
+        snake.add(new Point(15, 15));
+        snake.add(new Point(15, 16));
+        snake.add(new Point(15, 17));
+        
+        currentDirection = Direction.UP;
+        score = 0;
+        gameOver = false;
+        spawnFood();
+    }
+
+    // 4. Logic cốt lõi của Model: Di chuyển (Move)
+    public void update() {
+        if (gameOver) return;
+
+        // Tính toán vị trí đầu mới dựa trên hướng hiện tại
+        Point head = snake.getFirst();
+        Point newHead = new Point(head.x, head.y);
+
+        switch (currentDirection) {
+            case UP:    newHead.y--; break;
+            case DOWN:  newHead.y++; break;
+            case LEFT:  newHead.x--; break;
+            case RIGHT: newHead.x++; break;
+        }
+
+        // Kiểm tra va chạm (Collision Detection)
+        if (checkCollision(newHead)) {
+            gameOver = true;
+            return;
+        }
+
+        // Thêm đầu mới vào danh sách
+        snake.addFirst(newHead);
+
+        // Kiểm tra xem có ăn được mồi không
+        if (newHead.equals(food)) {
+            score += 10;
+            spawnFood(); // Ăn xong thì tạo mồi mới, không xóa đuôi (rắn dài ra)
+        } else {
+            snake.removeLast(); // Không ăn mồi thì xóa đuôi để giữ nguyên độ dài
+        }
+    }
+
+    // 5. Kiểm tra va chạm
+    private boolean checkCollision(Point head) {
+        // Va chạm tường
+        if (head.x < 0 || head.x >= BOARD_WIDTH || head.y < 0 || head.y >= BOARD_HEIGHT) {
+            return true;
+        }
+        // Tự đâm vào thân
+        for (Point p : snake) {
+            if (p.equals(head)) return true;
+        }
+        return false;
+    }
+
+    // 6. Tạo thức ăn ngẫu nhiên (không đè lên thân rắn)
+    public void spawnFood() {
+        Random rand = new Random();
+        do {
+            food = new Point(rand.nextInt(BOARD_WIDTH), rand.nextInt(BOARD_HEIGHT));
+        } while (snake.contains(food));
+    }
+
+    // --- Getters & Setters ---
+    public LinkedList<Point> getSnake() { return snake; }
+    public Point getFood() { return food; }
+    public Direction getCurrentDirection() { return currentDirection; }
+    public void setDirection(Direction dir) { this.currentDirection = dir; }
+    public int getScore() { return score; }
+    public boolean isGameOver() { return gameOver; }
+}
